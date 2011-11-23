@@ -1,10 +1,13 @@
 package org.vaadin.risto.externallayout;
 
+import java.util.Collections;
+import java.util.Iterator;
+
 import org.vaadin.risto.externallayout.client.ui.VExternalLayout;
 
 import com.vaadin.terminal.PaintException;
 import com.vaadin.terminal.PaintTarget;
-import com.vaadin.ui.AbstractComponent;
+import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
 
 /**
@@ -15,7 +18,7 @@ import com.vaadin.ui.Component;
  */
 @SuppressWarnings("serial")
 @com.vaadin.ui.ClientWidget(org.vaadin.risto.externallayout.client.ui.VExternalLayout.class)
-public class ExternalLayout extends AbstractComponent {
+public class ExternalLayout extends AbstractComponentContainer {
 
     private String divId;
     private Component childComponent;
@@ -37,6 +40,7 @@ public class ExternalLayout extends AbstractComponent {
 
         this.divId = divId;
         childComponent = component;
+        super.addComponent(childComponent);
     }
 
     @Override
@@ -45,6 +49,16 @@ public class ExternalLayout extends AbstractComponent {
 
         childComponent.paint(target);
         target.addAttribute(VExternalLayout.ATTR_DIVID, divId);
+    }
+
+    @Override
+    public void replaceComponent(Component oldComponent, Component newComponent) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Iterator<Component> getComponentIterator() {
+        return Collections.singleton(childComponent).iterator();
     }
 
 }

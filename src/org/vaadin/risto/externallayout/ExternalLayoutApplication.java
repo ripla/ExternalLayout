@@ -15,6 +15,10 @@ public class ExternalLayoutApplication extends Application {
         mainWindow.addComponent(internalLabel);
         mainWindow.addComponent(el);
         setMainWindow(mainWindow);
+        boolean jeah = externalLabel.getParent() == el;
+        if(!jeah) {
+            throw new RuntimeException("Invalid vaadincomponent eksepsšššn!");
+        }
     }
 
 }
