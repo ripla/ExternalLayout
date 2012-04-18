@@ -4,8 +4,10 @@ import com.vaadin.Application;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Window;
 
-@SuppressWarnings("serial")
 public class ExternalLayoutApplication extends Application {
+
+    private static final long serialVersionUID = -5256407863468847418L;
+
     @Override
     public void init() {
         Window mainWindow = new Window("Externallayout Application");
@@ -15,10 +17,5 @@ public class ExternalLayoutApplication extends Application {
         mainWindow.addComponent(internalLabel);
         mainWindow.addComponent(el);
         setMainWindow(mainWindow);
-        boolean jeah = externalLabel.getParent() == el;
-        if(!jeah) {
-            throw new RuntimeException("Invalid vaadincomponent eksepsšššn!");
-        }
     }
-
 }
