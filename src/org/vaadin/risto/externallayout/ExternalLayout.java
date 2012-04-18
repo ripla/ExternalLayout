@@ -3,25 +3,23 @@ package org.vaadin.risto.externallayout;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.vaadin.risto.externallayout.client.ui.VExternalLayout;
+import org.vaadin.risto.externallayout.client.ui.ExternalLayoutState;
 
-import com.vaadin.terminal.PaintException;
-import com.vaadin.terminal.PaintTarget;
-import com.vaadin.ui.AbstractComponentContainer;
+import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.HasComponents;
 
 /**
- * Single component layout that can render the given component on any HTML
+ * Single component container that can render the given component in any HTML
  * element.
  * 
- * @author Risto Yrjänä / Vaadin Ltd.
+ * @author Risto Yrj√§n√§ / Vaadin Ltd.
  */
-@SuppressWarnings("serial")
-@com.vaadin.ui.ClientWidget(org.vaadin.risto.externallayout.client.ui.VExternalLayout.class)
-public class ExternalLayout extends AbstractComponentContainer {
+public class ExternalLayout extends AbstractComponent implements HasComponents {
 
-    private String divId;
-    private Component childComponent;
+    private static final long serialVersionUID = 4970339558483506331L;
+
+    private final Component childComponent;
 
     /**
      * Create a layout that renders the given component to a HTML element that
@@ -38,27 +36,33 @@ public class ExternalLayout extends AbstractComponentContainer {
                     "The div id or the child component cannot be null.");
         }
 
-        this.divId = divId;
+        getState().setExternalComponentId(divId);
         childComponent = component;
-        super.addComponent(childComponent);
+        childComponent.setParent(this);
     }
 
     @Override
-    public void paintContent(PaintTarget target) throws PaintException {
-        super.paintContent(target);
-
-        childComponent.paint(target);
-        target.addAttribute(VExternalLayout.ATTR_DIVID, divId);
-    }
-
-    @Override
-    public void replaceComponent(Component oldComponent, Component newComponent) {
-        throw new UnsupportedOperationException();
+    public ExternalLayoutState getState() {
+        return (ExternalLayoutState) super.getState();
     }
 
     @Override
     public Iterator<Component> getComponentIterator() {
+        return iterator();
+    }
+
+    @Override
+    public Iterator<Component> iterator() {
         return Collections.singleton(childComponent).iterator();
     }
 
+    @Override
+    public boolean isComponentVisible(Component childComponent) {
+        return true;
+    }
+
+    @Override
+    public void requestRepaintAll() {
+        childComponent.requestRepaint();
+    }
 }
