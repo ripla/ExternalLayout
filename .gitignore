@@ -1,5 +1,9 @@
+.settings
 .classpath
 .project
-.settings
-build
-WebContent/VAADIN/widgetsets/*
+/build
+/*/build
+/*/src/main/webapp/VAADIN/widgetsets
+/*/src/main/webapp/VAADIN/gwt-unitCache
+.gradle*
+/target*
