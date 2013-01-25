@@ -4,7 +4,7 @@ subprojects {
 	apply plugin: "java"
 
 	apply from: "http://plugins.jasoft.fi/vaadin.plugin"
-	vaadin.version = "7.0.0.rc1"
+	vaadin.version = "7.0.0.rc2"
 
 	sourceCompatibility = "1.6"
 	targetCompatibility = "1.6"
