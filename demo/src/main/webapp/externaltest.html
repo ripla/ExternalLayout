@@ -1,43 +1,99 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
-<style type="text/css">html, body {height:100%;margin:0;}</style><link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/ExternalLayout/VAADIN/themes/reindeer/favicon.ico" /><link rel="icon" type="image/vnd.microsoft.icon" href="/ExternalLayout/VAADIN/themes/reindeer/favicon.ico" /><title>Vaadin&#32;7</title>
-</head>
-<body scroll="auto" class="v-generated-body">
-<iframe tabIndex="-1" id="__gwt_historyFrame" style="position:absolute;width:0;height:0;border:0;overflow:hidden;" src="javascript:false"></iframe><script type="text/javascript" src="/ExternalLayout/VAADIN/vaadinBootstrap.js"></script>
-<script type="text/javascript">
-//<![CDATA[
-if (!window.vaadin) alert("Failed to load the bootstrap javascript: /ExternalLayout/VAADIN/vaadinBootstrap.js");
-vaadin.setDefaults({
-    "appUri": "/ExternalLayout/ExternalLayout",
-    "widgetsetBase": "/ExternalLayout/VAADIN/widgetsets/",
-    "authErrMsg": {
-        "message": "Take note of any unsaved data, and <u>click here<\/u> to continue.",
-        "caption": "Authentication problem"
-    },
-    "debug": true,
-    "comErrMsg": {
-        "message": "Take note of any unsaved data, and <u>click here<\/u> to continue.",
-        "caption": "Communication problem"
-    },
-    "standalone": true
-});
-vaadin.initApplication("ExternalLayoutExternalLayout-639292714",{
-    "themeUri": "/ExternalLayout/VAADIN/themes/reindeer",
-    "versionInfo": {
-        "applicationVersion": "NONVERSIONED",
-        "vaadinVersion": "7.0.0.alpha2rc1"
-    },
-    "initialParams": {"restartApplication": [""]},
-    "rootId": 0,
-    "widgetset": "org.vaadin.risto.externallayout.ExternalLayoutWidgetset"
-});
-//]]>
-</script>
-<div id="ExternalLayoutExternalLayout-639292714" style="height:400px;border:2px solid red;margin:0"></div>
-<div id="external" style="border:2px solid blue;margin:0"></div>
 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9;chrome=1" />
+
+<title>ExternalLayout demo</title>
+
+<!-- Set up the favicon from the Vaadin theme -->
+<link rel="shortcut icon" type="image/vnd.microsoft.icon"
+	href="/VAADIN/themes/reindeer/favicon.ico" />
+<link rel="icon" type="image/vnd.microsoft.icon"
+	href="/VAADIN/themes/reindeer/favicon.ico" />
+</head>
+<body>
+	<!-- Loads the Vaadin widget set, etc. -->
+	<script type="text/javascript" src="VAADIN/vaadinBootstrap.js"></script>
+
+	<!-- GWT requires an invisible history frame. It is   -->
+	<!-- needed for page/fragment history in the browser. -->
+	<iframe tabindex="-1" id="__gwt_historyFrame"
+		style="position: absolute; width: 0; height: 0;
+                 border: 0; overflow: hidden"
+		src="javascript:false"></iframe>
+
+	<h1>ExternalLayout demo</h1>
+
+	<p>This is a static web page that contains an embedded Vaadin
+		application and a separate div with the id 'external'. The
+		ExternalLayout component from the application is placed in the
+		separate div</p>
+
+	<!-- So here comes the div element in which the Vaadin -->
+	<!-- application is embedded.                          -->
+	<div id="externallayout" class=" v-app"
+		style="height: 400px; border: 2px solid red; margin: 0">
+
+
+		<!-- Optional placeholder for the loading indicator -->
+		<div class=" v-app-loading"></div>
+
+		<!-- Alternative fallback text -->
+		<noscript>You have to enable javascript in your browser to
+			use an application built with Vaadin.
+		</noscript>
+	</div>
+
+	<div id="external" style="border: 2px solid blue; margin: 0"></div>
+
+	<script type="text/javascript">
+		//<![CDATA[
+		if (!window.vaadin)
+			alert("Failed to load the bootstrap JavaScript: "
+					+ "VAADIN/vaadinBootstrap.js");
+
+		/* The UI Configuration */
+		vaadin
+				.initApplication(
+						"externallayout",
+						{
+							"browserDetailsUrl" : "ExternalLayout",
+							"serviceUrl" : "./ExternalLayout/",
+							"widgetset" : "org.vaadin.risto.externallayout.widgetset.ExternalLayoutDemoWidgetset",
+							"theme" : "reindeer",
+							"versionInfo" : {
+								"vaadinVersion" : "7.0.0.rc2"
+							},
+							"vaadinDir" : "VAADIN/",
+							"heartbeatInterval" : 300,
+							"debug" : true,
+							"standalone" : false,
+							"authErrMsg" : {
+								"message" : "Take note of any unsaved data, "
+										+ "and <u>click here<\/u> to continue.",
+								"caption" : "Authentication problem"
+							},
+							"comErrMsg" : {
+								"message" : "Take note of any unsaved data, "
+										+ "and <u>click here<\/u> to continue.",
+								"caption" : "Communication problem"
+							},
+							"sessExpMsg" : {
+								"message" : "Take note of any unsaved data, "
+										+ "and <u>click here<\/u> to continue.",
+								"caption" : "Session Expired"
+							}
+						});//]] >
+	</script>
+
+	<p>
+		For instructions on embedding see <a
+			href="https://vaadin.com/book/vaadin7/-/page/advanced.embedding.html">the
+			Book of Vaadin</a>
+	</p>
+</body>
 </html>

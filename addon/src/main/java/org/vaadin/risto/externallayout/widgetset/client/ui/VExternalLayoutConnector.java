@@ -1,4 +1,4 @@
-package org.vaadin.risto.externallayout.client.ui;
+package org.vaadin.risto.externallayout.widgetset.client.ui;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;

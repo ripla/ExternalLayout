@@ -1,4 +1,4 @@
-package org.vaadin.risto.externallayout.client.ui;
+package org.vaadin.risto.externallayout.widgetset.client.ui;
 
 import com.vaadin.shared.AbstractComponentState;
 

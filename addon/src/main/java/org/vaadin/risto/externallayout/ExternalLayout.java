@@ -3,7 +3,7 @@ package org.vaadin.risto.externallayout;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.vaadin.risto.externallayout.client.ui.ExternalLayoutState;
+import org.vaadin.risto.externallayout.widgetset.client.ui.ExternalLayoutState;
 
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
