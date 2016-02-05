@@ -1,99 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=9;chrome=1" />
-
-<title>ExternalLayout demo</title>
-
-<!-- Set up the favicon from the Vaadin theme -->
-<link rel="shortcut icon" type="image/vnd.microsoft.icon"
-	href="/VAADIN/themes/reindeer/favicon.ico" />
-<link rel="icon" type="image/vnd.microsoft.icon"
-	href="/VAADIN/themes/reindeer/favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=10;chrome=1"/>
+    <style type="text/css">html, body {
+        height: 100%;
+        margin: 0;
+    }</style>
+    <title>ExternalLayout demo</title>
 </head>
 <body>
-	<!-- Loads the Vaadin widget set, etc. -->
-	<script type="text/javascript" src="VAADIN/vaadinBootstrap.js"></script>
+<h1>ExternalLayout demo</h1>
 
-	<!-- GWT requires an invisible history frame. It is   -->
-	<!-- needed for page/fragment history in the browser. -->
-	<iframe tabindex="-1" id="__gwt_historyFrame"
-		style="position: absolute; width: 0; height: 0;
-                 border: 0; overflow: hidden"
-		src="javascript:false"></iframe>
+<p>This is a static web page that contains an embedded Vaadin
+    application in the red area, and a separate div with the id 'external' as the blue area. The
+    ExternalLayout component from the application is rendered in the
+    separate div below</p>
 
-	<h1>ExternalLayout demo</h1>
+<div id="externallayout" class=" v-app"
+     style="height: 400px; border: 2px solid red; margin: 0">
 
-	<p>This is a static web page that contains an embedded Vaadin
-		application and a separate div with the id 'external'. The
-		ExternalLayout component from the application is placed in the
-		separate div</p>
+    <div class=" v-app-loading"></div>
 
-	<!-- So here comes the div element in which the Vaadin -->
-	<!-- application is embedded.                          -->
-	<div id="externallayout" class=" v-app"
-		style="height: 400px; border: 2px solid red; margin: 0">
+    <noscript>You have to enable javascript in your browser to
+        use an application built with Vaadin.
+    </noscript>
+</div>
 
+<div id="external" style="border: 2px solid blue; margin: 0"></div>
 
-		<!-- Optional placeholder for the loading indicator -->
-		<div class=" v-app-loading"></div>
+<p>
+    For instructions on embedding see <a
+        href="https://vaadin.com/book/vaadin7/-/page/advanced.embedding.html">the
+    Book of Vaadin</a>
+</p>
 
-		<!-- Alternative fallback text -->
-		<noscript>You have to enable javascript in your browser to
-			use an application built with Vaadin.
-		</noscript>
-	</div>
-
-	<div id="external" style="border: 2px solid blue; margin: 0"></div>
-
-	<script type="text/javascript">
-		//<![CDATA[
-		if (!window.vaadin)
-			alert("Failed to load the bootstrap JavaScript: "
-					+ "VAADIN/vaadinBootstrap.js");
-
-		/* The UI Configuration */
-		vaadin
-				.initApplication(
-						"externallayout",
-						{
-							"browserDetailsUrl" : "ExternalLayout",
-							"serviceUrl" : "./ExternalLayout/",
-							"widgetset" : "org.vaadin.risto.externallayout.widgetset.ExternalLayoutDemoWidgetset",
-							"theme" : "reindeer",
-							"versionInfo" : {
-								"vaadinVersion" : "7.0.0.rc2"
-							},
-							"vaadinDir" : "VAADIN/",
-							"heartbeatInterval" : 300,
-							"debug" : true,
-							"standalone" : false,
-							"authErrMsg" : {
-								"message" : "Take note of any unsaved data, "
-										+ "and <u>click here<\/u> to continue.",
-								"caption" : "Authentication problem"
-							},
-							"comErrMsg" : {
-								"message" : "Take note of any unsaved data, "
-										+ "and <u>click here<\/u> to continue.",
-								"caption" : "Communication problem"
-							},
-							"sessExpMsg" : {
-								"message" : "Take note of any unsaved data, "
-										+ "and <u>click here<\/u> to continue.",
-								"caption" : "Session Expired"
-							}
-						});//]] >
-	</script>
-
-	<p>
-		For instructions on embedding see <a
-			href="https://vaadin.com/book/vaadin7/-/page/advanced.embedding.html">the
-			Book of Vaadin</a>
-	</p>
+<script type="text/javascript" src="./VAADIN/vaadinBootstrap.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    if (!window.vaadin)
+        alert("Failed to load the bootstrap javascript: ./VAADIN/vaadinBootstrap.js");
+    if (typeof window.__gwtStatsEvent != 'function') {
+        vaadin.gwtStatsEvents = [];
+        window.__gwtStatsEvent = function(event) {
+            vaadin.gwtStatsEvents.push(event);
+            return true;
+        };
+    }
+    vaadin
+            .initApplication(
+                    "externallayout",
+                    {
+                        "browserDetailsUrl": "./ExternalLayout/",
+                        "serviceUrl": "./ExternalLayout/",
+                        "widgetset": "org.vaadin.risto.externallayout.widgetset.ExternalLayoutDemoWidgetset",
+                        "heartbeatInterval" : 300,
+                        "versionInfo" : {
+                            "vaadinVersion" : "7.6.2"
+                        },
+                        "vaadinDir" : "./VAADIN/",
+                        "authErrMsg" : {
+                            "message" : "Take note of any unsaved data, and <u>click here<\/u> to continue.",
+                            "caption" : "Authentication problem"
+                        },
+                        "theme" : "reindeer",
+                        "debug" : true,
+                        "comErrMsg" : {
+                            "message" : "Take note of any unsaved data, and <u>click here<\/u> to continue.",
+                            "caption" : "Communication problem"
+                        },
+                        "standalone" : false,
+                        "sessExpMsg" : {
+                            "message" : "Take note of any unsaved data, and <u>click here<\/u> to continue.",
+                            "caption" : "Session Expired"
+                        }
+                    });
+    //]]>
+</script>
 </body>
 </html>

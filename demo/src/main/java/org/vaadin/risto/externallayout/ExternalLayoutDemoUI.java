@@ -1,13 +1,18 @@
 package org.vaadin.risto.externallayout;
 
+import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 
+import javax.servlet.annotation.WebServlet;
+
+@Theme(ValoTheme.THEME_NAME)
 public class ExternalLayoutDemoUI extends UI {
-
-    private static final long serialVersionUID = -5256407863468847418L;
 
     @Override
     protected void init(VaadinRequest request) {
@@ -18,5 +23,11 @@ public class ExternalLayoutDemoUI extends UI {
         ExternalLayout el = new ExternalLayout("external", externalLabel);
         content.addComponent(internalLabel);
         content.addComponent(el);
+    }
+
+    @WebServlet(urlPatterns = {"/ExternalLayout/*", "/VAADIN/*"})
+    @VaadinServletConfiguration(ui = ExternalLayoutDemoUI.class, productionMode = false, widgetset = "org.vaadin.risto.externallayout.widgetset.ExternalLayoutDemoWidgetset")
+    public static class ExternalLayoutDemoServlet extends VaadinServlet {
+
     }
 }
