@@ -3,7 +3,7 @@ package org.vaadin.risto.externallayout;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.vaadin.risto.externallayout.widgetset.client.ui.ExternalLayoutState;
+import org.vaadin.risto.externallayout.client.shared.ExternalLayoutState;
 
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
@@ -12,7 +12,7 @@ import com.vaadin.ui.HasComponents;
 /**
  * Single component container that can render the given component in any HTML
  * element.
- * 
+ *
  * @author Risto Yrjänä / Vaadin Ltd.
  */
 public class ExternalLayout extends AbstractComponent implements HasComponents {
@@ -22,11 +22,11 @@ public class ExternalLayout extends AbstractComponent implements HasComponents {
     private final Component childComponent;
 
     /**
-     * Create a layout that renders the given component to a HTML element that
+     * Create a layout that renders the given component to an external HTML element that
      * has the specified id
-     * 
+     *
      * @param divId
-     *            target id for the component, cannot be null
+     *            id for the target element, cannot be null
      * @param component
      *            component to be rendered, cannot be null
      */
@@ -36,7 +36,7 @@ public class ExternalLayout extends AbstractComponent implements HasComponents {
                     "The div id or the child component cannot be null.");
         }
 
-        getState().setExternalComponentId(divId);
+        getState().externalComponentId = divId;
         childComponent = component;
         childComponent.setParent(this);
     }

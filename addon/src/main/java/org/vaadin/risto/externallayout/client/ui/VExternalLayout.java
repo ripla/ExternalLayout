@@ -1,10 +1,14 @@
-package org.vaadin.risto.externallayout.widgetset.client.ui;
+package org.vaadin.risto.externallayout.client.ui;
 
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * Client-side implementation for the ExternalLayout addon. A simple, single-component panel
+ * that renders the contained component in the given element.
+ */
 public class VExternalLayout extends SimplePanel implements Iterable<Widget> {
 
     private static final String CLASSNAME = "v-externallayout";
@@ -20,8 +24,10 @@ public class VExternalLayout extends SimplePanel implements Iterable<Widget> {
      * external element.
      */
     @Override
-    protected Element getContainerElement() {
-        return getRenderTargetElement();
+    @SuppressWarnings("deprecation")
+    //have to use old Element here because of superclass
+    protected com.google.gwt.user.client.Element getContainerElement() {
+        return DOM.asOld(getRenderTargetElement());
     }
 
     public Element getRenderTargetElement() {
@@ -30,7 +36,7 @@ public class VExternalLayout extends SimplePanel implements Iterable<Widget> {
 
     public void setRenderTargetElement(Element renderTargetElement) {
         this.renderTargetElement = renderTargetElement;
-        DOM.setElementProperty(renderTargetElement, "className", CLASSNAME);
+        renderTargetElement.setClassName(CLASSNAME);
     }
 
 }

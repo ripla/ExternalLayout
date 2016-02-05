@@ -1,17 +1,20 @@
-package org.vaadin.risto.externallayout.widgetset.client.ui;
+package org.vaadin.risto.externallayout.client.ui;
 
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.ui.AbstractHasComponentsConnector;
 import com.vaadin.shared.ui.Connect;
+import org.vaadin.risto.externallayout.ExternalLayout;
+import org.vaadin.risto.externallayout.client.shared.ExternalLayoutState;
 
-@Connect(org.vaadin.risto.externallayout.ExternalLayout.class)
+/**
+ * Connector between {@link ExternalLayout} and {@link VExternalLayout}
+ */
+@Connect(ExternalLayout.class)
 public class VExternalLayoutConnector extends AbstractHasComponentsConnector {
-
-    private static final long serialVersionUID = 2272582707865117536L;
 
     @Override
     protected SimplePanel createWidget() {
@@ -32,8 +35,8 @@ public class VExternalLayoutConnector extends AbstractHasComponentsConnector {
     public void onConnectorHierarchyChange(ConnectorHierarchyChangeEvent event) {
         ComponentConnector child = getChildComponents().get(0);
 
-        Element targetElement = DOM.getElementById(getState()
-                .getExternalComponentId());
+        Element targetElement = Document.get().getElementById(getState()
+                .externalComponentId);
         if (targetElement == null) {
             targetElement = getWidget().getElement();
         }
