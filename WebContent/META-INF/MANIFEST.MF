@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: ExternalLayout
-Implementation-Version: 1.0
-Vaadin-Package-Version: 1
-Class-Path: 
-Vaadin-Widgetsets: org.vaadin.risto.externallayout.ExternalLayoutWidge
- tset
-

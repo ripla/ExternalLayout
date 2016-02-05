@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=10;chrome=1"/>
+    <style type="text/css">html, body {
+        height: 100%;
+        margin: 0;
+    }</style>
+    <title>ExternalLayout demo</title>
+</head>
+<body>
+<h1>ExternalLayout demo</h1>
+
+<p>This is a static web page that contains an embedded Vaadin
+    application in the red area, and a separate div with the id 'external' as the blue area. The
+    ExternalLayout component from the application is rendered in the
+    separate div below</p>
+
+<div id="externallayout" class=" v-app"
+     style="height: 400px; border: 2px solid red; margin: 0">
+
+    <div class=" v-app-loading"></div>
+
+    <noscript>You have to enable javascript in your browser to
+        use an application built with Vaadin.
+    </noscript>
+</div>
+
+<div id="external" style="border: 2px solid blue; margin: 0"></div>
+
+<p>
+    For instructions on embedding see <a
+        href="https://vaadin.com/book/vaadin7/-/page/advanced.embedding.html">the
+    Book of Vaadin</a>
+</p>
+
+<script type="text/javascript" src="./VAADIN/vaadinBootstrap.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    if (!window.vaadin)
+        alert("Failed to load the bootstrap javascript: ./VAADIN/vaadinBootstrap.js");
+    if (typeof window.__gwtStatsEvent != 'function') {
+        vaadin.gwtStatsEvents = [];
+        window.__gwtStatsEvent = function(event) {
+            vaadin.gwtStatsEvents.push(event);
+            return true;
+        };
+    }
+    vaadin
+            .initApplication(
+                    "externallayout",
+                    {
+                        "browserDetailsUrl": "./ExternalLayout/",
+                        "serviceUrl": "./ExternalLayout/",
+                        "widgetset": "org.vaadin.risto.externallayout.widgetset.ExternalLayoutDemoWidgetset",
+                        "heartbeatInterval" : 300,
+                        "versionInfo" : {
+                            "vaadinVersion" : "7.6.2"
+                        },
+                        "vaadinDir" : "./VAADIN/",
+                        "authErrMsg" : {
+                            "message" : "Take note of any unsaved data, and <u>click here<\/u> to continue.",
+                            "caption" : "Authentication problem"
+                        },
+                        "theme" : "reindeer",
+                        "debug" : true,
+                        "comErrMsg" : {
+                            "message" : "Take note of any unsaved data, and <u>click here<\/u> to continue.",
+                            "caption" : "Communication problem"
+                        },
+                        "standalone" : false,
+                        "sessExpMsg" : {
+                            "message" : "Take note of any unsaved data, and <u>click here<\/u> to continue.",
+                            "caption" : "Session Expired"
+                        }
+                    });
+    //]]>
+</script>
+</body>
+</html>
